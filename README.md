@@ -10,7 +10,7 @@ _A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile
     import SimpleBreakpoints from 'simple-breakpoints'
 
     // default breakpoint sizes: { mobile: 480, tablet: 640, small_desktop: 1024, large_desktop: 1180 }
-    var breakpoints = new Breakpoints();
+    var breakpoints = new SimpleBreakpoints();
 
     if(breakpoints.isMobile()) {
         // do something for mobile
@@ -31,7 +31,7 @@ _A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile
 ```javascript
     import SimpleBreakpoints from 'simple-breakpoints'
 
-    var breakpoints = new Breakpoints({
+    var breakpoints = new SimpleBreakpoints({
         mobile        : 320,
         tablet        : 640,
         small_desktop : 900,
@@ -66,7 +66,7 @@ isLargeDesktop | | Check if the viewport is within the `large_desktop` breakpoin
 
         data () {
             return {
-                breakpoints: new Breakpoints()
+                breakpoints: new SimpleBreakpoints()
             }
         }
 
