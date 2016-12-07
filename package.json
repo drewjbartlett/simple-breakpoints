@@ -1,11 +1,25 @@
 {
-  "name": "simple-breakpoints",
-  "version": "1.0.0",
-  "description": "A simple js plugin to define conditionally check defined breakpoints",
-  "main": "dist/build.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Drew J Bartlett",
-  "license": "ISC"
+    "name": "simple-breakpoints",
+    "version": "1.0.0",
+    "description": "A simple js plugin to define conditionally check defined breakpoints",
+    "main": "dist/index.js",
+    "scripts": {
+        "compile": "babel --presets=es2015 -d dist src",
+        "prepublish": "npm run compile",
+    },
+    "author": "Drew J Bartlett",
+    "license": "ISC",
+    "keywords": [
+        "breakpoints",
+        "js",
+        "mobile"
+    ],
+    "devDependencies": {
+        "babel-cli": "^6.18.0",
+        "babel-preset-es2015": "^6.18.0"
+    },
+    "bugs": {
+        "url": "https://github.com/drewjbartlett/simple-breakpoints/issues"
+    },
+    "homepage": "https://github.com/drewjbartlett/simple-breakpoints#readme",
 }
