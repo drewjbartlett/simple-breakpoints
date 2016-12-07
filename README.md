@@ -56,33 +56,4 @@ isTablet | | Check if the viewport is within the `tablet` breakpoint
 isSmallDesktop | | Check if the viewport is within the `small_desktop` breakpoint
 isLargeDesktop | | Check if the viewport is within the `large_desktop` breakpoint
 
-### Using with libraries like [Vue.js](https://vuejs.org/)
-
-```javascript
-    import SimpleBreakpoints from 'simple-breakpoints'
-
-    new Vue({
-        el: '#app'
-
-        data () {
-            return {
-                breakpoints: new SimpleBreakpoints()
-            }
-        }
-
-    };
-```
-
-```html
-    <div id="app">
-        <div v-if="breakpoints.isMobile()">Mobile</div>
-        <div v-if="breakpoints.isTablet()">Tablet</div>
-        <div v-if="breakpoints.isSmallDesktop()">Small Desktop</div>
-        <div v-if="breakpoints.isLargeDesktop()">Large Desktop</div>
-
-        <!-- simple scalable div -->
-        <div class="some-div-with-window-height" :style="{ height: breakpoints.viewport.height + 'px' }">
-            A div that grows with the window
-        </div>
-    </div>
-```
+### For using with [Vue.js](https://vuejs.org/), see [vue-simple-breakpoints](https://github.com/drewjbartlett/vue-simple-breakpoints)
