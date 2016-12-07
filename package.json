@@ -1,6 +1,6 @@
 {
   "name": "simple-breakpoints",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple js plugin to define conditionally check defined breakpoints",
   "main": "dist/index.js",
   "scripts": {
