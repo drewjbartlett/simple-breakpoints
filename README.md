@@ -44,7 +44,7 @@ _A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile
 
 Function | Params | Description
 ------ | -------- | -----------
-getViewportSize |  | returns the viewport size _this is fired on `window.resize` and is stored in `breakpoints.viewport_`
+getViewportSize |  | returns the viewport size as object `{ width: 1024, height: 768 }` _this is fired on `window.resize` and is stored in `breakpoints.viewport`_
 currentBreakpoint | | returns current breakpoint size (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`)
 isBetween | smallBreakpoint, largeBreakpoint (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) | Check if viewport is between tow breakpoints
 isLessThan | breakpoint (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) | Check if viewport is less than the width of the breakpoint
