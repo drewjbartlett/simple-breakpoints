@@ -1,0 +1,11 @@
+{
+  "name": "simple-breakpoints",
+  "version": "1.0.0",
+  "description": "A simple js plugin to define conditionally check defined breakpoints",
+  "main": "dist/build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Drew J Bartlett",
+  "license": "ISC"
+}
