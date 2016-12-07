@@ -12,7 +12,8 @@
     "keywords": [
         "breakpoints",
         "js",
-        "mobile"
+        "mobile",
+        "vue"
     ],
     "devDependencies": {
         "babel-cli": "^6.18.0",
