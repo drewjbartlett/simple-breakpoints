@@ -1,10 +1,10 @@
 # Simple Breakpoints
 
-_A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`)_
+_A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) with support to listen for breakpoint change events_
 
 ## Installation and usage
 
-    $ npm install simple-breakpoints
+    $ npm install simple-breakpoints --save
 
 ```javascript
     import SimpleBreakpoints from 'simple-breakpoints'
@@ -23,6 +23,33 @@ _A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile
     if(breakpoints.isBetween('small_desktop', 'large_desktop')) {
         // do something between small and large desktop
     }
+
+```
+
+### Listening to events
+
+```javascript
+    // on all breakpoint changes
+    breakpoints.on('breakpointChange', (from, to) => {
+        console.log(`change from ${from} to ${to}`);
+        // change from small_desktop to large_desktop
+        // change from tablet to mobile
+    });
+
+    // on breakpoint changes from small to large
+    breakpoints.on('breakpointChangeUp', (from, to) => {
+        console.log(`change Up from ${from} to ${to}`);
+        // change from small_desktop to large_desktop
+    });
+
+    // on breakpoint changes from large to small
+    breakpoints.on('breakpointChangeDown', (from, to) => {
+        console.log(`change Down from ${from} to ${to}`);
+        // change from large_desktop to small_desktop
+    });
+
+    // remove all events from `breakpointChangeDown`
+    breakpoints.off('breakpointChangeDown');
 
 ```
 
@@ -55,5 +82,7 @@ isMobile | | Check if the viewport is within the `mobile` breakpoint
 isTablet | | Check if the viewport is within the `tablet` breakpoint
 isSmallDesktop | | Check if the viewport is within the `small_desktop` breakpoint
 isLargeDesktop | | Check if the viewport is within the `large_desktop` breakpoint
+on (event, callback) | (`'breakpointChange' | 'breakpointChangeUp' |  'breakpointChangeDown'`, `callback(from, to)`) | watch for changes on breakpoints with and fire a callback
+off (event) | (`'breakpointChange' | 'breakpointChangeUp' |  'breakpointChangeDown'`)| Remove event listener for breakpoint change
 
 ### For using with [Vue.js](https://vuejs.org/), see [vue-simple-breakpoints](https://github.com/drewjbartlett/vue-simple-breakpoints)

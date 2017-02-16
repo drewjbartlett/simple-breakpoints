@@ -1,30 +1,61 @@
+import Dispatcher from './Dispatcher';
+
 export default class {
     constructor(breakpoints = { mobile: 480, tablet: 640, small_desktop: 1024, large_desktop: 1180 }) {
-        this.breakpoints = breakpoints;
+        this.breakpoints    = breakpoints;
         this.getViewportSize();
-        this.viewport = this.getViewportSize();
 
-        window.addEventListener('resize', () =>{
+        this.viewport       = this.getViewportSize();
+        this.dispatcher     = new Dispatcher();
+        this.lastBreakpoint = this.currentBreakpoint();
+
+        window.addEventListener('resize', () => {
             this.viewport = this.getViewportSize();
+
+            let currentBreakpoint = this.currentBreakpoint(),
+                direction;
+
+            if(currentBreakpoint !== this.lastBreakpoint) {
+                this.dispatcher.fire('breakpointChange', this.lastBreakpoint, currentBreakpoint);
+
+                if(this.breakpoints[this.lastBreakpoint] > this.breakpoints[currentBreakpoint]) {
+                    direction = 'Down';
+                } else {
+                    direction = 'Up';
+                }
+
+                this.dispatcher.fire(`breakpointChange${direction}`, this.lastBreakpoint, currentBreakpoint);
+
+                this.lastBreakpoint = currentBreakpoint;
+            }
+
         });
     }
 
-    getViewportSize() {
-		let e = window,
-			a = 'inner';
+    on (event, callback) {
+        this.dispatcher.on(event, callback);
+    }
+
+    off (event) {
+        this.dispatcher.off(event);
+    }
+
+    getViewportSize () {
+		let win = window,
+			obj = 'inner';
 
 		if (!('innerWidth' in window)) {
-			a = 'client';
-			e = document.documentElement || document.body;
+			obj = 'client';
+			win = document.documentElement || document.body;
 		}
 
         return {
-            width: e[a + 'Width'],
-            height: e[a + 'Height']
+            width: win[obj + 'Width'],
+            height: win[obj + 'Height']
         };
 	}
 
-    currentBreakpoint() {
+    currentBreakpoint () {
         if(this.isMobile()) {
             return 'mobile';
         }
@@ -42,39 +73,39 @@ export default class {
         }
     }
 
-    isBetween(smallBreakpoint, largeBreakpoint) {
+    isBetween (smallBreakpoint, largeBreakpoint) {
         return this.viewport.width >= this.breakpoints[smallBreakpoint] && this.viewport.width <= this.breakpoints[largeBreakpoint];
     }
 
-    isLessThan(breakpoint) {
+    isLessThan (breakpoint) {
         return this.viewport.width < this.breakpoints[breakpoint];
     }
 
-    isGreaterThan(breakpoint) {
+    isGreaterThan (breakpoint) {
         return this.viewport.width > this.breakpoints[breakpoint];
     }
 
-    isLessThanEqualTo(breakpoint) {
+    isLessThanEqualTo (breakpoint) {
         return this.viewport.width <= this.breakpoints[breakpoint];
     }
 
-    isGreaterThanEqualTo(breakpoint) {
+    isGreaterThanEqualTo (breakpoint) {
         return this.viewport.width >= this.breakpoints[breakpoint];
     }
 
-    isMobile() {
+    isMobile () {
         return this.isLessThanEqualTo('mobile');
     }
 
-    isTablet() {
+    isTablet () {
         return this.isBetween('mobile', 'small_desktop');
     }
 
-    isSmallDesktop() {
+    isSmallDesktop () {
         return this.isBetween('small_desktop', 'large_desktop');
     }
 
-    isLargeDesktop() {
+    isLargeDesktop () {
         return this.viewport.width >= this.breakpoints.large_desktop;
     }
 

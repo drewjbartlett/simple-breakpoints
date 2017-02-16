@@ -6,6 +6,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _Dispatcher = require('./Dispatcher');
+
+var _Dispatcher2 = _interopRequireDefault(_Dispatcher);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var _class = function () {
@@ -18,27 +24,57 @@ var _class = function () {
 
         this.breakpoints = breakpoints;
         this.getViewportSize();
+
         this.viewport = this.getViewportSize();
+        this.dispatcher = new _Dispatcher2.default();
+        this.lastBreakpoint = this.currentBreakpoint();
 
         window.addEventListener('resize', function () {
             _this.viewport = _this.getViewportSize();
+
+            var currentBreakpoint = _this.currentBreakpoint(),
+                direction = void 0;
+
+            if (currentBreakpoint !== _this.lastBreakpoint) {
+                _this.dispatcher.fire('breakpointChange', _this.lastBreakpoint, currentBreakpoint);
+
+                if (_this.breakpoints[_this.lastBreakpoint] > _this.breakpoints[currentBreakpoint]) {
+                    direction = 'Down';
+                } else {
+                    direction = 'Up';
+                }
+
+                _this.dispatcher.fire('breakpointChange' + direction, _this.lastBreakpoint, currentBreakpoint);
+
+                _this.lastBreakpoint = currentBreakpoint;
+            }
         });
     }
 
     _createClass(_class, [{
+        key: 'on',
+        value: function on(event, callback) {
+            this.dispatcher.on(event, callback);
+        }
+    }, {
+        key: 'off',
+        value: function off(event) {
+            this.dispatcher.off(event);
+        }
+    }, {
         key: 'getViewportSize',
         value: function getViewportSize() {
-            var e = window,
-                a = 'inner';
+            var win = window,
+                obj = 'inner';
 
             if (!('innerWidth' in window)) {
-                a = 'client';
-                e = document.documentElement || document.body;
+                obj = 'client';
+                win = document.documentElement || document.body;
             }
 
             return {
-                width: e[a + 'Width'],
-                height: e[a + 'Height']
+                width: win[obj + 'Width'],
+                height: win[obj + 'Height']
             };
         }
     }, {
