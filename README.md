@@ -73,7 +73,7 @@ Function | Params | Description
 ------ | -------- | -----------
 getViewportSize |  | returns the viewport size as object `{ width: 1024, height: 768 }` _this is fired on `window.resize` and is stored in `breakpoints.viewport`_
 currentBreakpoint | | returns current breakpoint size (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`)
-isBetween | smallBreakpoint, largeBreakpoint (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) | Check if viewport is between tow breakpoints
+isBetween | smallBreakpoint, largeBreakpoint (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) | Check if viewport is between two breakpoints
 isLessThan | breakpoint (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) | Check if viewport is less than the width of the breakpoint
 isGreaterThan | breakpoint (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) | Check if viewport is greater than the width of the breakpoint
 isLessThanEqualTo | breakpoint (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) | Check if viewport is less than or equal the width of the breakpoint
