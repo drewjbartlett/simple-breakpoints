@@ -6,7 +6,6 @@ export default class {
         this.getViewportSize();
 
         this.viewport       = this.getViewportSize();
-        this.dispatcher     = new Dispatcher();
         this.lastBreakpoint = this.currentBreakpoint();
 
         window.addEventListener('resize', () => {
@@ -16,7 +15,7 @@ export default class {
                 direction;
 
             if(currentBreakpoint !== this.lastBreakpoint) {
-                this.dispatcher.fire('breakpointChange', this.lastBreakpoint, currentBreakpoint);
+                Dispatcher.fire('breakpointChange', this.lastBreakpoint, currentBreakpoint);
 
                 if(this.breakpoints[this.lastBreakpoint] > this.breakpoints[currentBreakpoint]) {
                     direction = 'Down';
@@ -24,7 +23,7 @@ export default class {
                     direction = 'Up';
                 }
 
-                this.dispatcher.fire(`breakpointChange${direction}`, this.lastBreakpoint, currentBreakpoint);
+                Dispatcher.fire(`breakpointChange${direction}`, this.lastBreakpoint, currentBreakpoint);
 
                 this.lastBreakpoint = currentBreakpoint;
             }
@@ -33,11 +32,11 @@ export default class {
     }
 
     on (event, callback) {
-        this.dispatcher.on(event, callback);
+        Dispatcher.on(event, callback);
     }
 
     off (event) {
-        this.dispatcher.off(event);
+        Dispatcher.off(event);
     }
 
     getViewportSize () {

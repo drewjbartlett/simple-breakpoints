@@ -51,6 +51,12 @@ _A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile
     // remove all events from `breakpointChangeDown`
     breakpoints.off('breakpointChangeDown');
 
+    // fire an event only once
+    breakpoints.once('breakpointChange', (from, to) => {
+        console.log(`firing an event ${from} to ${to} only once`);
+        // change from large_desktop to small_desktop
+    });
+
 ```
 
 ### Defining your own breakpoints
@@ -83,6 +89,7 @@ isTablet | | Check if the viewport is within the `tablet` breakpoint
 isSmallDesktop | | Check if the viewport is within the `small_desktop` breakpoint
 isLargeDesktop | | Check if the viewport is within the `large_desktop` breakpoint
 on (event, callback) | (`'breakpointChange' | 'breakpointChangeUp' |  'breakpointChangeDown'`, `callback(from, to)`) | watch for changes on breakpoints with and fire a callback
+once (event, callback) | (`'breakpointChange' | 'breakpointChangeUp' |  'breakpointChangeDown'`, `callback(from, to)`) | watch for changes on breakpoints with and fire a callback only *once*
 off (event) | (`'breakpointChange' | 'breakpointChangeUp' |  'breakpointChangeDown'`)| Remove event listener for breakpoint change
 
 ### For using with [Vue.js](https://vuejs.org/), see [vue-simple-breakpoints](https://github.com/drewjbartlett/vue-simple-breakpoints)
