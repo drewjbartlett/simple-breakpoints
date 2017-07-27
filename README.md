@@ -9,7 +9,7 @@ _A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile
 ```javascript
     import SimpleBreakpoints from 'simple-breakpoints'
 
-    // default breakpoint sizes: { mobile: 480, tablet: 640, small_desktop: 1024, large_desktop: 1180 }
+    // default breakpoint sizes: { small_mobile: 320, mobile: 480, tablet: 640, small_desktop: 1024, large_desktop: 1180 }
     var breakpoints = new SimpleBreakpoints();
 
     if(breakpoints.isMobile()) {
