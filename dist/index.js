@@ -26,7 +26,6 @@ var _class = function () {
         this.getViewportSize();
 
         this.viewport = this.getViewportSize();
-        this.dispatcher = new _Dispatcher2.default();
         this.lastBreakpoint = this.currentBreakpoint();
 
         window.addEventListener('resize', function () {
@@ -36,7 +35,7 @@ var _class = function () {
                 direction = void 0;
 
             if (currentBreakpoint !== _this.lastBreakpoint) {
-                _this.dispatcher.fire('breakpointChange', _this.lastBreakpoint, currentBreakpoint);
+                _Dispatcher2.default.fire('breakpointChange', _this.lastBreakpoint, currentBreakpoint);
 
                 if (_this.breakpoints[_this.lastBreakpoint] > _this.breakpoints[currentBreakpoint]) {
                     direction = 'Down';
@@ -44,7 +43,7 @@ var _class = function () {
                     direction = 'Up';
                 }
 
-                _this.dispatcher.fire('breakpointChange' + direction, _this.lastBreakpoint, currentBreakpoint);
+                _Dispatcher2.default.fire('breakpointChange' + direction, _this.lastBreakpoint, currentBreakpoint);
 
                 _this.lastBreakpoint = currentBreakpoint;
             }
@@ -54,12 +53,12 @@ var _class = function () {
     _createClass(_class, [{
         key: 'on',
         value: function on(event, callback) {
-            this.dispatcher.on(event, callback);
+            _Dispatcher2.default.on(event, callback);
         }
     }, {
         key: 'off',
         value: function off(event) {
-            this.dispatcher.off(event);
+            _Dispatcher2.default.off(event);
         }
     }, {
         key: 'getViewportSize',

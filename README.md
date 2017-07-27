@@ -88,8 +88,8 @@ isMobile | | Check if the viewport is within the `mobile` breakpoint
 isTablet | | Check if the viewport is within the `tablet` breakpoint
 isSmallDesktop | | Check if the viewport is within the `small_desktop` breakpoint
 isLargeDesktop | | Check if the viewport is within the `large_desktop` breakpoint
-on (event, callback) | (`'breakpointChange' | 'breakpointChangeUp' |  'breakpointChangeDown'`, `callback(from, to)`) | watch for changes on breakpoints with and fire a callback
-once (event, callback) | (`'breakpointChange' | 'breakpointChangeUp' |  'breakpointChangeDown'`, `callback(from, to)`) | watch for changes on breakpoints with and fire a callback only *once*
+on (event, callback) | (`'breakpointChange' | 'breakpointChangeUp' | 'breakpointChangeDown'`, `callback(from, to)`) | watch for changes on breakpoints with and fire a callback
+once (event, callback) | (`'breakpointChange' | 'breakpointChangeUp' | 'breakpointChangeDown'`, `callback(from, to)`) | watch for changes on breakpoints with and fire a callback only *once*
 off (event) | (`'breakpointChange' | 'breakpointChangeUp' |  'breakpointChangeDown'`)| Remove event listener for breakpoint change
 
 ### For using with [Vue.js](https://vuejs.org/), see [vue-simple-breakpoints](https://github.com/drewjbartlett/vue-simple-breakpoints)
