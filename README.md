@@ -1,5 +1,8 @@
 # Simple Breakpoints
 
+[![npm](https://img.shields.io/npm/v/simple-breakpoints.svg)](https://www.npmjs.com/package/simple-breakpoints)
+[![npm](https://img.shields.io/npm/dt/simple-breakpoints.svg)](https://www.npmjs.com/package/simple-breakpoints)
+
 _A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile', 'tablet', 'small_desktop', 'large_desktop'`) with support to listen for breakpoint change events_
 
 ## Installation and usage
