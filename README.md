@@ -76,7 +76,7 @@ _A simple breakpoints plugin based off of four simple breakpoint sizes (`'mobile
 
 ```
 
-##API
+### API
 
 Function | Params | Description
 ------ | -------- | -----------
