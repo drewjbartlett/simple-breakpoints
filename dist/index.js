@@ -18,7 +18,7 @@ var _class = function () {
     function _class() {
         var _this = this;
 
-        var breakpoints = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { mobile: 480, tablet: 640, small_desktop: 1024, large_desktop: 1180 };
+        var breakpoints = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { small_mobile: 320, mobile: 480, tablet: 640, small_desktop: 1024, large_desktop: 1180 };
 
         _classCallCheck(this, _class);
 
@@ -79,6 +79,10 @@ var _class = function () {
     }, {
         key: 'currentBreakpoint',
         value: function currentBreakpoint() {
+            if (this.isSmallMobile()) {
+                return 'small_mobile';
+            }
+
             if (this.isMobile()) {
                 return 'mobile';
             }
@@ -119,6 +123,16 @@ var _class = function () {
         key: 'isGreaterThanEqualTo',
         value: function isGreaterThanEqualTo(breakpoint) {
             return this.viewport.width >= this.breakpoints[breakpoint];
+        }
+    }, {
+        key: 'isSmallMobile',
+        value: function isSmallMobile() {
+            return this.isLessThanEqualTo('small_mobile');
+        }
+    }, {
+        key: 'isMordernMobile',
+        value: function isMordernMobile() {
+            return this.isBetween('small_mobile', 'mobile');
         }
     }, {
         key: 'isMobile',
